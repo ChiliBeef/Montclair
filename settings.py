@@ -12,8 +12,3 @@ clock = pygame.time.Clock()
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 YELLOW = (255, 255, 0)
-
-
-### Font Setup ###
-dialogue_font = pygame.font.SysFont("helvetica", 20)
-option_font = pygame.font.SysFont("helvetica", 20)
