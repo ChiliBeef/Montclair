@@ -10,5 +10,5 @@ class Dialogue:
 
 class Options:
     def __init__(self):
-        self.font = option_font = pygame.font.SysFont("helvetica", 20)
+        self.font = pygame.font.SysFont("helvetica", 20)
         self.color = YELLOW
