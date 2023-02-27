@@ -1,23 +1,27 @@
 import pygame
 from settings import *
+from dialogue import *
 
 pygame.init()
 
 
 
 ### First dialogue ###
-dialogue = dialogue_font.render("Here we have some standard text and dialogue.", True, WHITE)
+dialogue = Dialogue()
+dialogue.render("Here we have some standard text and dialogue.")
 WINDOW.blit(dialogue, (20, 10))
-dialogue = dialogue_font.render("Here is even more standard text and dialogue.", True, WHITE)
+dialogue.render("Here is even more standard text and dialogue.")
 WINDOW.blit(dialogue, (20, 40))
 
 
 ### First set of choices ###
-option1 = option_font.render("This is Option 1.", True, YELLOW)
+option1, option2 = Options()
+
+option1.render("This is Option 1.")
 WINDOW.blit(option1, (20, 80))
 option1_rect = pygame.Rect(20, 80, 145, 20)
 
-option2 = option_font.render("This is Option 2.", True, YELLOW)
+option2.render("This is Option 2.")
 WINDOW.blit(option2, (20, 100))
 option2_rect = pygame.Rect(20, 100, 145, 20)
 
@@ -36,7 +40,7 @@ while run:
                 
                 if option1_rect.collidepoint(mouse_pos):
                     WINDOW.fill(BLACK)
-                    option1_text = option_font.render("Welcome to Option 1", True, WHITE)
+                    option1_text = option1.render("Welcome to Option 1")
                     WINDOW.blit(option1_text, (300, 300))
                     print("You clicked on Option 1.")
                     option1_rect.topleft = (-100, -100)  # Remove clickable area from Option 1 by putting it off screen.
@@ -44,7 +48,7 @@ while run:
 
                 elif option2_rect.collidepoint(mouse_pos):
                     WINDOW.fill(BLACK)
-                    option2_text = option_font.render("Welcome to Option 2", True, WHITE)
+                    option2_text = option2.render("Welcome to Option 2")
                     WINDOW.blit(option2_text, (300, 300))
                     print("You clicked on Option 2.")
                     option1_rect.topleft = (-100, -100)  # Remove clickable area from Option 1 by putting it off screen.
