@@ -10,6 +10,7 @@ WINDOW = pygame.display.set_mode((WIDTH, HEIGHT))
 FPS = 60
 clock = pygame.time.Clock()
 
+
 ### Colors ###
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
