@@ -9,7 +9,7 @@ from animate_hallway import animate_hallway
 def office_0(WINDOW):
     WINDOW.fill(BLACK)
 
-    ### Dialogue ###    
+    ### Dialogue ###
     dialogue = Dialogue()
     dialogue.render("Here we have some dialogue about how it's your first evening shift at the Montclair datacenter.", 20, 10)
     dialogue.render("Here we have even more dialogue about checking any messages or error reports.", 20, 30)
