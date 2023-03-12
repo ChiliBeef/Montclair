@@ -1,27 +1,27 @@
 import sys
 import pygame
 from settings import *
-from font_settings import *
-from computer_console_0 import computer_console_0
-from animate_hallway import animate_hallway
 
 
-def office_0(WINDOW):
-    WINDOW.fill(BLACK)
+def animate_hallway(WINDOW):
 
-    ### Dialogue ###    
-    dialogue = Dialogue()
-    dialogue.render("Here we have some dialogue about how it's your first evening shift at the Montclair datacenter.", 20, 10)
-    dialogue.render("Here we have even more dialogue about checking any messages or error reports.", 20, 30)
+    # Load the PNG files
+    frames = []
+    for i in range(0, 7):
+        filename = f"assets/hallway/hallway_{i}.png"
+        frame = pygame.image.load(filename)
+        frames.append(frame)
 
 
-    ### Options ###
-    option1 = Options()
-    option1.render("Check the system log.", 20, 80)
+    # Set up the animation parameters
+    frame_duration = 500                        # milliseconds per frame
+    num_frames = len(frames)
+    current_frame = 0
+    time_since_last_frame = 0
+    last_tick = pygame.time.get_ticks()         # Define last_tick variable
 
-    option2 = Options()
-    option2.render("Investigate the server room.", 20, 100)
-    
+
+    # Animation loop
     running = True
     while running:
 
@@ -30,16 +30,17 @@ def office_0(WINDOW):
                 running = False
                 pygame.quit()
                 sys.exit()
-            
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                if option1.rect.collidepoint(event.pos):
-                    computer_console_0(WINDOW)
-                    option1.rect.topleft = (-100, -100)
-                    option2.rect.topleft = (-100, -100)
 
-                elif option2.rect.collidepoint(event.pos):
-                    animate_hallway(WINDOW)
-                    option1.rect.topleft = (-100, -100)
-                    option2.rect.topleft = (-100, -100)
+        # Update the animation
+        time_since_last_frame += pygame.time.get_ticks() - last_tick
+        if time_since_last_frame >= frame_duration:
+            current_frame += 1
+            if current_frame >= num_frames:
+                running = False
+                break
 
+            time_since_last_frame = 0
+        last_tick = pygame.time.get_ticks()             # Update last_tick variable
+
+        WINDOW.blit(frames[current_frame], (0, 0))      # Draw the current frame
         pygame.display.update()
