@@ -8,7 +8,7 @@ from office_0 import office_0
 pygame.init()
 
 ### Title Screen ###
-title, title_rect = title_text()
+title, title_rect = title_font()
 WINDOW.blit(title, title_rect)
 
 
