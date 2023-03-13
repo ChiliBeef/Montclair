@@ -9,7 +9,7 @@ def animate_hallway(WINDOW):
     frames = []
     for i in range(0, 7):
         filename = f"assets/hallway/hallway_{i}.png"
-        frame = pygame.image.load(filename)
+        frame = pygame.image.load(filename).convert_alpha()
         frames.append(frame)
 
 
