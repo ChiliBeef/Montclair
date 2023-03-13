@@ -9,10 +9,10 @@ def computer_console_0(WINDOW):
     frames = []
     for i in range(0, 8):
         filename = f"assets/computer/monitor_{i}.png"
-        frame = pygame.image.load(filename)
+        frame = pygame.image.load(filename).convert_alpha()
         frames.append(frame)
 
-    server_rack_icon = pygame.image.load("assets/computer/server_rack_icon.png")
+    server_rack_icon = pygame.image.load("assets/computer/server_rack_icon.png").convert_alpha()
     icon_width, icon_height = server_rack_icon.get_width(), server_rack_icon.get_height()
     icon_rect = pygame.Rect(80, 70, icon_width, icon_height)
 
@@ -52,7 +52,6 @@ def computer_console_0(WINDOW):
             WINDOW.blit(server_rack_icon, (80, 70))
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if icon_rect.collidepoint(event.pos):
-                    print("You clicked on the icon!")
                     computer_console_0(WINDOW)
                     icon_rect.topleft = (-100, -100)
 
